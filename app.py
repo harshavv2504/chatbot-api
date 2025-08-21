@@ -16,6 +16,11 @@ class ChatRequest(BaseModel):
     session_id: str
     message: str
 
+# Root endpoint
+@app.get("/")
+def home():
+    return {"status": "API running 🚀"}
+
 @app.post("/chat")
 def chat(req: ChatRequest):
     if req.session_id not in conversations:
